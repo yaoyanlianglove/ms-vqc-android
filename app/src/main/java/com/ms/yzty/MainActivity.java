@@ -121,48 +121,46 @@ public class MainActivity extends AppCompatActivity {
             {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.item_monitor:
-                            if(myApp.getLastFragment()!=0)
-                            {
-                                switchFragment(myApp.getLastFragment(),0);
-                                lastFragment=0;
+                        if(item.getItemId() == R.id.item_monitor) {
+                            if (myApp.getLastFragment() != 0) {
+                                switchFragment(myApp.getLastFragment(), 0);
+                                lastFragment = 0;
                                 sendDataType = 0x10;
                                 myApp.setSendDataType(sendDataType);
                                 myApp.setLastFragment(lastFragment);
                             }
                             return true;
-                        case R.id.item_telemeter:
-                            if(myApp.getLastFragment()!=1)
-                            {
-                                switchFragment(myApp.getLastFragment(),1);
-                                lastFragment=1;
+                        }
+                        else if(item.getItemId() == R.id.item_telemeter) {
+                            if (myApp.getLastFragment() != 1) {
+                                switchFragment(myApp.getLastFragment(), 1);
+                                lastFragment = 1;
                                 sendDataType = 0x16;
                                 myApp.setSendDataType(sendDataType);
                                 myApp.setLastFragment(lastFragment);
                             }
                             return true;
-                        case R.id.item_control:
-                            if(myApp.getLastFragment()!=2)
-                            {
-                                switchFragment(myApp.getLastFragment(),2);
-                                lastFragment=2;
+                        }
+                        else if(item.getItemId() == R.id.item_control) {
+                            if (myApp.getLastFragment() != 2) {
+                                switchFragment(myApp.getLastFragment(), 2);
+                                lastFragment = 2;
                                 sendDataType = 0x10;   //转到此页面默认只发送心跳
                                 myApp.setSendDataType(sendDataType);
                                 myApp.setLastFragment(lastFragment);
                             }
                             return true;
-                        case R.id.item_config:
-                            if(myApp.getLastFragment()!=3)
-                            {
-                                switchFragment(myApp.getLastFragment(),3);
-                                lastFragment=3;
+                        }
+                        else if(item.getItemId() == R.id.item_config) {
+                            if (myApp.getLastFragment() != 3) {
+                                switchFragment(myApp.getLastFragment(), 3);
+                                lastFragment = 3;
                                 sendDataType = 0x10; //转到此页面默认只发送心跳
                                 myApp.setSendDataType(sendDataType);
                                 myApp.setLastFragment(lastFragment);
                             }
                             return true;
-                    }
+                        }
                     return false;
                 }
             };

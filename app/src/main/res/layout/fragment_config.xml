@@ -599,7 +599,7 @@
                     style="@style/textViewLabelStyle_config"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/textView_tran_cap_label" />
+                    android:text="@string/textView_rev_downTh_label" />
 
                 <EditText
                     android:id="@+id/editText_tran_cap"
@@ -608,16 +608,16 @@
                     android:layout_weight="1"
                     android:autofillHints=""
                     android:ems="10"
-                    android:hint="@string/editText_hint_tran_cap"
+                    android:hint="@string/editText_hint_rev_downTh"
                     android:inputType="textPersonName"
-                    android:text="@string/editText_tran_cap"
+                    android:text="@string/editText_rev_downTh"
                     tools:targetApi="o" />
 
                 <TextView
                     style="@style/textViewLabelStyle_config"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/textView_unit_kva" />
+                    android:text="@string/textView_unit_v" />
             </LinearLayout>
 
             <LinearLayout
@@ -630,7 +630,7 @@
                     style="@style/textViewLabelStyle_config"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/textView_device_code_label" />
+                    android:text="@string/textView_rev_upTh_label" />
 
                 <EditText
                     android:id="@+id/editText_device_code"
@@ -639,16 +639,16 @@
                     android:layout_weight="1"
                     android:autofillHints=""
                     android:ems="10"
-                    android:hint="@string/editText_hint_device_code"
+                    android:hint="@string/editText_hint_rev_upTh"
                     android:inputType="textPersonName"
-                    android:text="@string/editText_device_code"
+                    android:text="@string/editText_rev_upTh"
                     tools:targetApi="o" />
 
                 <TextView
                     style="@style/textViewLabelStyle_config"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/textView_gap" />
+                    android:text="@string/textView_unit_v" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

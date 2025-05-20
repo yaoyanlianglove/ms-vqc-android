@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">民生电气</string>
+    <string name="app_name">VQC(V1.1)</string>
 
     <string name="textView_select_tr_ty">请选择变压器类型</string>
     <string name="radioButton_ty">调压</string>
@@ -140,12 +140,12 @@
     <string name="textView_alarm_temp_th_label">温度告警阈值：</string>
     <string name="editText_alarm_temp_th"> </string>
     <string name="editText_hint_alarm_temp_th">默认85</string>
-    <string name="textView_tran_cap_label">变压器容量：</string>
-    <string name="editText_tran_cap"> </string>
-    <string name="editText_hint_tran_cap">实际容量，例如400</string>
-    <string name="textView_device_code_label">设备编码：</string>
-    <string name="editText_device_code"> </string>
-    <string name="editText_hint_device_code">小于65535</string>
+    <string name="textView_rev_downTh_label">反向降压阈值：</string>
+    <string name="editText_rev_downTh"> </string>
+    <string name="editText_hint_rev_downTh">10000~12000</string>
+    <string name="textView_rev_upTh_label">反向升压阈值：</string>
+    <string name="editText_rev_upTh">8000~10000 </string>
+    <string name="editText_hint_rev_upTh">小于65535</string>
 
     <string name="textView_switch_mode_label">模式切换</string>
     <string name="textView_switch_control_label">开关控制</string>

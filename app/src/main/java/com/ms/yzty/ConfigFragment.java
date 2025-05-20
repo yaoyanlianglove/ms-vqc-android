@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bigkoo.pickerview.TimePickerView;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +27,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class ConfigFragment extends Fragment {
+
+    private MainActivity mainActivity;
 
     private EditText timeEdit;
     private TimePickerView timePick;
@@ -41,8 +45,8 @@ public class ConfigFragment extends Fragment {
     private EditText lockHigh;
     private EditText lockLow;
     private EditText alarmTempTh;
-    private EditText tranCapacity;
-    private EditText deviceCode;
+    private EditText revDownTh;
+    private EditText revUpTh;
     private EditText capTh;
     private EditText pfUp;
     private EditText pfDown;
@@ -66,8 +70,8 @@ public class ConfigFragment extends Fragment {
         lockHigh     = view.findViewById(R.id.editText_lock_high);
         lockLow      = view.findViewById(R.id.editText_lock_low);
         alarmTempTh  = view.findViewById(R.id.editText_alarm_temp_th);
-        tranCapacity = view.findViewById(R.id.editText_tran_cap);
-        deviceCode   = view.findViewById(R.id.editText_device_code);
+        revDownTh = view.findViewById(R.id.editText_tran_cap);
+        revUpTh   = view.findViewById(R.id.editText_device_code);
 
         capTh        = view.findViewById(R.id.editText_cap_th);
         pfUp         = view.findViewById(R.id.editText_pf_up);
@@ -76,7 +80,7 @@ public class ConfigFragment extends Fragment {
         capQieDelay  = view.findViewById(R.id.editText_qc_delay);
 
         myApp = (MyApplication)mActivity.getApplication();
-
+        mainActivity =  (MainActivity)getActivity();
         timeEdit = view.findViewById(R.id.editText_time);
         timeEdit.setOnClickListener(new EditText.OnClickListener()
         {
@@ -87,9 +91,9 @@ public class ConfigFragment extends Fragment {
                 timePick.show();
             }
         });
-        timePick = new TimePickerView.Builder(this.getContext(), new TimePickerView.OnTimeSelectListener() {
+        timePick = new TimePickerBuilder(mainActivity, new OnTimeSelectListener() {
             @Override
-            public void onTimeSelect(Date date, View v) {//选中事件回调
+            public void onTimeSelect(Date date, View v) {
                 timeEdit.setText(getTime(date));
             }
         }).build();
@@ -237,18 +241,18 @@ public class ConfigFragment extends Fragment {
                 }
                 configData[20] = (byte)(Integer.parseInt(s) >> 8);
                 configData[21] = (byte)(Integer.parseInt(s) & 0xFF);
-                s = tranCapacity.getText().toString();
+                s = revDownTh.getText().toString();
                 if (TextUtils.isEmpty(s)|| numberStat(s))
                 {
-                    Toast.makeText(mActivity, "变压器容量参数不能为空，或者参数中有非法字符", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity, "反向降压阈值参数不能为空，或者参数中有非法字符", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 configData[22] = (byte)(Integer.parseInt(s) >> 8);
                 configData[23] = (byte)(Integer.parseInt(s) & 0xFF);
-                s = deviceCode.getText().toString();
+                s = revUpTh.getText().toString();
                 if (TextUtils.isEmpty(s)|| numberStat(s))
                 {
-                    Toast.makeText(mActivity, "设备编码参数不能为空，或者参数中有非法字符", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity, "反向升压阈值参数不能为空，或者参数中有非法字符", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 configData[24] = (byte)(Integer.parseInt(s) >> 8);
@@ -395,7 +399,7 @@ public class ConfigFragment extends Fragment {
                 else
                     b = buf[29];
                 s = (a*256 + b) + "";
-                tranCapacity.setText(s);
+                revDownTh.setText(s);
 
                 a = buf[30];
                 if(buf[31] < 0)
@@ -403,7 +407,7 @@ public class ConfigFragment extends Fragment {
                 else
                     b = buf[31];
                 s = (a*256 + b) + "";
-                deviceCode.setText(s);
+                revUpTh.setText(s);
 
                 a = buf[32];
                 if(buf[33] < 0)
